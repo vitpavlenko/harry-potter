@@ -1,0 +1,526 @@
+/* ── Harry Potter Themed Design System ── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --navy: #0f0e1a;
+  --navy-light: #1a1a2e;
+  --purple-dark: #16213e;
+  --purple: #1f2b50;
+  --gold: #d4af37;
+  --gold-light: #f0d060;
+  --gold-dark: #b8960c;
+  --parchment: #f5e6c8;
+  --parchment-dark: #e0cfa8;
+  --text: #e8e0d0;
+  --text-muted: #a09888;
+  --danger: #c0392b;
+  --success-green: #2ecc71;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--navy);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Starfield Background ── */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.starfield .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite alternate;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0; transform: scale(0.5); }
+  50%  { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* ── Layout ── */
+
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Hero Section ── */
+
+.hero {
+  text-align: center;
+  padding: 5rem 1.5rem 3rem;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.3rem 1.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--gold);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.hero h1 .sparkle {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ── Price Badge ── */
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  font-family: 'Cinzel', serif;
+}
+
+.price-tag .currency {
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.price-tag .amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.price-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── CTA Button ── */
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  border-radius: 4px;
+  padding: 1rem 2.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(212, 175, 55, 0.3);
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+}
+
+.btn-cta:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* ── Section Titles ── */
+
+.section {
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+.section + .section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+}
+
+/* ── Feature Cards ── */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, rgba(31, 43, 80, 0.6), rgba(22, 33, 62, 0.8));
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 8px;
+  padding: 1.8rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+}
+
+.feature-card .icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.feature-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── Included Bundle ── */
+
+.bundle-list {
+  max-width: 650px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bundle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  background: rgba(31, 43, 80, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.bundle-item:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.bundle-item .num {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.bundle-item h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.bundle-item p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ── Warning / Notice Boxes ── */
+
+.notice {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem 1.8rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.notice--warning {
+  background: rgba(192, 57, 43, 0.12);
+  border: 1px solid rgba(192, 57, 43, 0.35);
+}
+
+.notice--info {
+  background: rgba(31, 43, 80, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.notice-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notice--warning .notice-title {
+  color: #e74c3c;
+}
+
+.notice--info .notice-title {
+  color: var(--gold);
+}
+
+.notice ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.notice li {
+  padding: 0.2rem 0;
+  color: var(--text-muted);
+}
+
+.notice li strong {
+  color: var(--text);
+}
+
+/* ── Spoiler Guide ── */
+
+.spoiler-section {
+  max-width: 700px;
+  margin: 2rem auto 0;
+}
+
+/* ── Bottom CTA ── */
+
+.bottom-cta {
+  text-align: center;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.bottom-cta .section-title {
+  margin-bottom: 1.5rem;
+}
+
+/* ── Footer ── */
+
+.site-footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  margin-top: auto;
+}
+
+/* ── Success Page ── */
+
+.success-hero {
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.success-hero h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.success-hero p {
+  font-size: 1.1rem;
+  color: var(--text);
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.pdf-viewer-wrap {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.pdf-viewer-frame {
+  width: 100%;
+  height: 95vh;
+  min-height: 700px;
+  border: none;
+  border-radius: 0;
+  background: var(--navy-light);
+  overflow: hidden;
+  display: block;
+}
+
+.pdf-fallback {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.pdf-fallback a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pdf-fallback a:hover {
+  color: var(--gold-light);
+}
+
+/* ── Guarantee Badge ── */
+
+.guarantee {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 3.5rem 1rem 2.5rem;
+  }
+
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .btn-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bundle-item {
+    padding: 1rem;
+  }
+
+  .pdf-viewer-frame {
+    height: 60vh;
+    min-height: 350px;
+  }
+}

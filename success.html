@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Wizard Quiz is Ready!</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+  <div class="starfield" id="starfield" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+
+    <section class="success-hero">
+      <div class="container">
+        <h1>✨ Your Owl Has Arrived! ✨</h1>
+        <p>
+          Thank you for your purchase. Your Wizard Quiz bundle is ready below.
+          Follow the instructions in the document to download all your files and
+          start hosting an unforgettable quiz night!
+        </p>
+      </div>
+    </section>
+
+    <div class="pdf-viewer-wrap">
+      <iframe
+        src="DOWNLOAD_INSTRUCTION.pdf#zoom=page-width"
+        class="pdf-viewer-frame"
+        title="Download Instructions"
+      ></iframe>
+      <p class="pdf-fallback">
+        Can't see the document?
+        <a href="DOWNLOAD_INSTRUCTION.pdf" download>Download the Instructions (PDF)</a>
+      </p>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>This is an independent fan-made product and is not affiliated with, endorsed by, or connected to Warner Bros., J.K. Rowling, or any official Harry Potter entities.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var field = document.getElementById('starfield');
+      var count = Math.min(120, Math.floor(window.innerWidth * window.innerHeight / 8000));
+      for (var i = 0; i < count; i++) {
+        var star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
+        star.style.animationDelay = (Math.random() * 5) + 's';
+        star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
+        field.appendChild(star);
+      }
+    })();
+  </script>
+
+</body>
+</html>
