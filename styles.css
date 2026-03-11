@@ -292,6 +292,37 @@ body {
   line-height: 1.6;
 }
 
+/* ── Preview Gallery ── */
+
+.preview-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.preview-card {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(31, 43, 80, 0.4);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.preview-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+}
+
+.preview-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── Included Bundle ── */
 
 .bundle-list {
@@ -511,7 +542,8 @@ body {
     padding: 1rem 1.5rem;
   }
 
-  .features-grid {
+  .features-grid,
+  .preview-gallery {
     grid-template-columns: 1fr;
   }
 
